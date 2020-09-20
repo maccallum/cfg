@@ -32,14 +32,14 @@ bright-yellow = #ffff00
 bright-orange = #ffa500
 bright-red = #ff0000
 
-background = ${self.base00}
-background-alt = ${self.base1}
-foreground = ${self.base3}
-foreground-alt = ${self.base2}
-primary = ${self.base3}
-secondary = ${self.base2}
+background = ${self.base02}
+background-alt = ${self.base01}
+foreground = ${self.base1}
+foreground-alt = ${self.base0}
+primary = ${self.foreground}
+secondary = ${self.foreground-alt}
 alert = ${self.red}
-icon = ${self.base3}
+icon = ${self.foreground}
 
 [bar/bar1]
 width = 100%
@@ -66,7 +66,7 @@ font-1 = "Siji:size=20;0"
 module-margin-left = 2
 module-margin-right = 0
 
-modules-left = i3
+modules-left = i3 filesystem 
 ; modules-center = mpd
 ; modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
 modules-right = memory cpu alsa wlan eth battery powermenu
@@ -75,17 +75,20 @@ modules-center = date
 ;tray-position = center
 ;tray-padding = 3
 
-; [module/filesystem]
-; type = internal/fs
-; interval = 25
+bottom = true
+
+[module/filesystem]
+type = internal/fs
+interval = 25
 
 ; mount-0 = /
+mount-0 = /mnt/Obama
 
-; label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
-; label-unmounted = %mountpoint% not mounted
-; label-unmounted-foreground = ${colors.foreground-alt}
-
-bottom = true
+label-mounted = %mountpoint%%{F-}: %percentage_used%%
+label-mounted-foreground = ${colors.foreground}
+;label-unmounted = %mountpoint% not mounted
+label-unmounted = 
+label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/i3]
 type = internal/i3
@@ -103,7 +106,8 @@ label-mode-background = ${colors.background}
 ; focused = Active workspace on focused monitor
 label-focused = %index%
 label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
+label-focused-underline= ${colors.base2}
+label-focused-foreground = ${colors.base2}
 label-focused-padding = 1
 
 ; unfocused = Inactive workspace on any monitor
@@ -119,6 +123,7 @@ label-visible-padding = ${self.label-focused-padding}
 ; urgent = Workspace with urgency hint set
 label-urgent = %index%
 label-urgent-background = ${colors.alert}
+label-urgent-foreground = ${colors.base2}
 label-urgent-padding = 1
 
 [module/cpu]
@@ -145,7 +150,7 @@ interface = wlp1s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-underline = ${colors.bright-green} 
+format-connected-underline = ${colors.green} 
 label-connected = %essid%
 
 ;format-disconnected =
@@ -238,14 +243,14 @@ adapter = AC
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = ${colors.bright-yellow}
+format-charging-underline = ${colors.yellow}
 
 format-discharging = <animation-discharging> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = ""
 format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${colors.bright-green}
+format-full-underline = ${colors.green}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
