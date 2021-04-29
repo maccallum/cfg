@@ -191,7 +191,7 @@ date = " %A, %B %d (Week %V)"
 ; date-alt = " %Y-%m-%d"
 date-alt = 
 
-time = %H:%M:%S
+time = %H:%M:%S (%Z %z)
 time-alt = 
 
 ;format-prefix = 
