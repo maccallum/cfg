@@ -127,7 +127,7 @@
  '(nrepl-message-colors
    '("#ffb4ac" "#ddaa6f" "#e5c06d" "#39454b" "#dce9f1" "#3e3e45" "#7ec98f" "#e5786d" "#834c98"))
  '(package-selected-packages
-   '(easy-jekyll poly-markdown realgud-lldb solarized-theme slime haskell-mode flatui-theme company color-theme-sanityinc-tomorrow auctex))
+   '(php-mode easy-jekyll poly-markdown realgud-lldb solarized-theme slime haskell-mode flatui-theme company color-theme-sanityinc-tomorrow auctex))
  '(pos-tip-background-color "#2a2a2a")
  '(pos-tip-foreground-color "#939393")
  '(smartrep-mode-line-active-bg (solarized-color-blend "#8ac6f2" "#2a2a2a" 0.2))
@@ -182,3 +182,9 @@
 ;; (global-set-key [f5] (lambda () (interactive) (disable-themes) (load-theme 'sanityinc-tomorrow-day t)))
 
 (disable-themes)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
