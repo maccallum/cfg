@@ -30,7 +30,7 @@
 (global-set-key (kbd "TAB") 'self-insert-command)
 (global-set-key (kbd "M-SPC") 'other-window)
 (global-set-key (kbd "C-c C-r") 'replace-string)
-(global-set-key (kbd "C-c o") 'ff-find-other-file)
+(global-set-key (kbd "C-c o") 'occur)
 
 ;; C mode
 (setq-default indent-tabs-mode nil)
@@ -42,12 +42,12 @@
 	  '(lambda ()
 	     (c-set-offset 'inextern-lang 0)))
 
-;; gray out the "assert(...)" wrapper
+;; C mode: gray out the "assert(...)" wrapper
 (add-hook 'c-mode-common-hook
 	  (lambda () (font-lock-add-keywords nil
 					     '(("^[ \t]+\\<\\([a-zA-Z_]?[a-zA-Z0-9_]*assert\(.*\);\\)" 1 '(:foreground "#888800") t)))))
 
-;; gray out the stuff inside parenthesis with a slightly lighter color
+;; C mode: gray out the stuff inside parenthesis with a slightly lighter color
 (add-hook 'c-mode-common-hook
 	  (lambda () (font-lock-add-keywords nil
 					     '(("^[ \t]+\\<[a-zA-Z_]?[a-zA-Z0-9_]*assert\\(\(.*\);\\)" 1 '(:foreground "#CCCC00") t)))))
@@ -55,6 +55,10 @@
 ;; slime
 (setq inferior-lisp-program "/usr/local/bin/sbcl")
 (setq slime-contribs '(slime-fancy))
+
+;; Julia mode
+(package-install 'julia-mode)
+(require 'julia-mode)
 
 ;; spelling
 (require 'flyspell)
@@ -68,9 +72,28 @@
 (add-hook 'prog-mode-hook 'whitespace-mode)
 (setq column-number-mode t)
 
+;; org-mode
+(require 'org)
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
+(require 'ox-md)
+
 ;; LaTeX
 (setq TeX-PDF-mode t)
 (set-variable (quote latex-run-command) "pdflatex")
+
+;; (add-hook 'LaTeX-mode-hook
+;;           (lambda ()
+;;             (font-lock-add-keywords nil
+;;                                     '(("[^%].*\\(\\\\cvitem\\){\\([^}]+\\)}" 1 font-lock-keyword-face t)
+;;                                       ("\\(\\\\cvitem\\){\\([^}]+\\)}" 2 font-lock-type-face t)
+;;                                       ("\\(\\\\years\\)\\>" 1 font-lock-keyword-face t)))))
+;; (eval-after-load "font-latex"
+;;   '(setq-default
+;;     font-latex-match-bold-command-keywords
+;;     (cons "cvitem" font-latex-match-bold-command-keywords)))
+
 
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -103,6 +126,14 @@
    '("51ec7bfa54adf5fff5d466248ea6431097f5a18224788d0bd7eb1257a4f7b773" "13a8eaddb003fd0d561096e11e1a91b029d3c9d64554f8e897b2513dbf14b277" "0fffa9669425ff140ff2ae8568c7719705ef33b7a927a0ba7c5e2ffcfac09b75" "c433c87bd4b64b8ba9890e8ed64597ea0f8eb0396f4c9a9e01bd20a04d15d358" "00445e6f15d31e9afaa23ed0d765850e9cd5e929be5e8e63b114a3346236c44c" "285d1bf306091644fb49993341e0ad8bafe57130d9981b680c1dbd974475c5c7" "830877f4aab227556548dc0a28bf395d0abe0e3a0ab95455731c9ea5ab5fe4e1" "2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" "7f1d414afda803f3244c6fb4c2c64bea44dac040ed3731ec9d75275b9e831fe5" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" "82d2cac368ccdec2fcc7573f24c3f79654b78bf133096f9b40c20d97ec1d8016" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "392395ee6e6844aec5a76ca4f5c820b97119ddc5290f4e0f58b38c9748181e8d" default))
  '(fci-rule-color "#424242")
  '(flycheck-color-mode-line-face-to-color 'mode-line-buffer-id)
+ '(font-latex-match-bold-command-keywords '(("cvitem" "{") ("years" "{")))
+ '(font-latex-match-function-keywords
+   '(("ifshortbiofirstperson" "")
+     ("ifshortbiothirdperson" "")
+     ("iflongbiofirstperson" "")
+     ("iflongbiothirdperson" "")))
+ '(font-latex-match-italic-command-keywords '(("cvsubitem" "{")))
+ '(font-latex-match-warning-keywords '(("sk" "")))
  '(frame-background-mode 'dark)
  '(highlight-changes-colors '("#e5786d" "#834c98"))
  '(highlight-symbol-colors
@@ -127,7 +158,7 @@
  '(nrepl-message-colors
    '("#ffb4ac" "#ddaa6f" "#e5c06d" "#39454b" "#dce9f1" "#3e3e45" "#7ec98f" "#e5786d" "#834c98"))
  '(package-selected-packages
-   '(julia-mode php-mode easy-jekyll poly-markdown realgud-lldb solarized-theme slime haskell-mode flatui-theme company color-theme-sanityinc-tomorrow auctex))
+   '(org-drill lorem-ipsum julia-mode php-mode easy-jekyll poly-markdown realgud-lldb solarized-theme slime haskell-mode flatui-theme company color-theme-sanityinc-tomorrow auctex))
  '(pos-tip-background-color "#2a2a2a")
  '(pos-tip-foreground-color "#939393")
  '(smartrep-mode-line-active-bg (solarized-color-blend "#8ac6f2" "#2a2a2a" 0.2))
@@ -188,6 +219,3 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
-(package-install 'julia-mode)
-(require 'julia-mode)
