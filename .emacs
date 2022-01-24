@@ -57,8 +57,8 @@
 (setq slime-contribs '(slime-fancy))
 
 ;; Julia mode
-(package-install 'julia-mode)
-(require 'julia-mode)
+;; (package-install 'julia-mode)
+;; (require 'julia-mode)
 
 ;; spelling
 (require 'flyspell)
