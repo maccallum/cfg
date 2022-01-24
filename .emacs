@@ -1,5 +1,6 @@
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp")
-(add-to-list 'load-path "~/elisp")
+(let ((default-directory (expand-file-name "~/elisp")))
+  (normal-top-level-add-subdirs-to-load-path))
 
 ;; backup
 (setq backup-directory-alist `(("." . "~/.tilde-backups")))
