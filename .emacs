@@ -44,14 +44,23 @@
 	     (c-set-offset 'inextern-lang 0)))
 
 ;; C mode: gray out the "assert(...)" wrapper
+;; (setq font-lock-multiline t)
+;; (add-hook 'c-mode-common-hook
+;; 	  (lambda () (font-lock-add-keywords nil
+;; 					                     '(("^[ \t]+\\<\\([a-zA-Z_]?[a-zA-Z0-9_]*assert\(\\([^;]*\n?\\)*\);\\)" 1 '(:foreground "#888800") t)))))
+
+;; (add-hook 'c-mode-common-hook
+;; 	  (lambda () (font-lock-add-keywords nil
+;; 					                     '(("^[ \t]+\\<\\([a-zA-Z_]?[a-zA-Z0-9_]*assert\(.*\);\\)" 1 '(:foreground "#888800") t)))))
+
 (add-hook 'c-mode-common-hook
 	  (lambda () (font-lock-add-keywords nil
-					     '(("^[ \t]+\\<\\([a-zA-Z_]?[a-zA-Z0-9_]*assert\(.*\);\\)" 1 '(:foreground "#888800") t)))))
+					                     '(("^[ \t]+\\<\\([a-zA-Z_]?[a-zA-Z0-9_]*assert\\)" 1 '(:foreground "#FFFF00") t)))))
 
 ;; C mode: gray out the stuff inside parenthesis with a slightly lighter color
-(add-hook 'c-mode-common-hook
-	  (lambda () (font-lock-add-keywords nil
-					     '(("^[ \t]+\\<[a-zA-Z_]?[a-zA-Z0-9_]*assert\\(\(.*\);\\)" 1 '(:foreground "#CCCC00") t)))))
+;; (add-hook 'c-mode-common-hook
+;; 	  (lambda () (font-lock-add-keywords nil
+;; 					     '(("^[ \t]+\\<[a-zA-Z_]?[a-zA-Z0-9_]*assert\\(\(\\([^;]*\n?\\)*\);\\)" 1 '(:foreground "#CCCC00") t)))))
 
 ;; slime
 (setq inferior-lisp-program "/usr/local/bin/sbcl")
@@ -95,6 +104,7 @@
 ;;     font-latex-match-bold-command-keywords
 ;;     (cons "cvitem" font-latex-match-bold-command-keywords)))
 
+(load "dired-x")
 
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -117,6 +127,7 @@
  '(ansi-color-names-vector
    (vector "#000000" "#d54e53" "#b9ca4a" "#e7c547" "#7aa6da" "#c397d8" "#70c0b1" "#eaeaea"))
  '(beacon-color "#d54e53")
+ '(case-fold-search t)
  '(compilation-message-face 'default)
  '(cua-global-mark-cursor-color "#7ec98f")
  '(cua-normal-cursor-color "#868686")
