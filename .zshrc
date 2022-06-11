@@ -16,6 +16,9 @@ autoload -U select-word-style
 select-word-style bash
 
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
+alias enw='\emacs -nw'
+alias emacsx='\emacs'
+alias emacs='enw'
 
 if [[ -e "$HOME/.local.zsh" ]]; then
     source "$HOME/.local.zsh"
