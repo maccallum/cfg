@@ -175,6 +175,88 @@
    '(cmake-mode markdown-mode package-utils org org-drill lorem-ipsum julia-mode php-mode easy-jekyll poly-markdown realgud-lldb solarized-theme slime haskell-mode flatui-theme company color-theme-sanityinc-tomorrow auctex))
  '(pos-tip-background-color "#2a2a2a")
  '(pos-tip-foreground-color "#939393")
+ '(safe-local-variable-values
+   '((eval progn
+           (set
+            (make-local-variable 'org-time-clocksum-format)
+            '(:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t))
+           (setq org-latex-tables-centered t org-latex-default-table-environment "longtable")
+           (local-set-key
+            (kbd "<f5>")
+            (lambda nil
+              (interactive)
+              (beginning-of-buffer)
+              (re-search-forward "#\\+CONSTANTS: .+block=\\([0-9]\\{4\\}-[0-9]\\{2\\}\\)")
+              (let
+                  ((block
+                    (match-string 1)))
+                (re-search-forward "#\\+BEGIN: clocktable .+:block \\([0-9]\\{4\\}-[0-9]\\{2\\}\\)")
+                (kill-region
+                 (match-beginning 1)
+                 (match-end 1))
+                (insert block))
+              (beginning-of-buffer)
+              (search-forward "#+BEGIN: clocktable")
+              (unwind-protect
+                  (progn
+                    (defadvice org-table-goto-column
+                        (before always-make-new-columns
+                                (n &optional on-delim force)
+                                activate)
+                      "always adds new columns when we move to them"
+                      (setq force t))
+                    (beginning-of-line)
+                    (org-update-dblock))
+                (ad-deactivate 'org-table-goto-column))
+              (beginning-of-buffer)
+              (search-forward "| totaltarget")
+              (org-table-recalculate t))))
+     (eval progn
+           (set
+            (make-local-variable 'org-time-clocksum-format)
+            '(:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t))
+           (setq org-latex-tables-centered nil org-latex-default-table-environment "longtable")
+           (local-set-key
+            (kbd "<f5>")
+            (lambda nil
+              (interactive)
+              (beginning-of-buffer)
+              (re-search-forward "Invoice number: \\([0-9]+\\)")
+              (let
+                  ((n
+                    (string-to-number
+                     (match-string 1))))
+                (kill-region
+                 (match-beginning 1)
+                 (match-end 1))
+                (insert
+                 (format "%d"
+                         (1+ n))))
+              (beginning-of-buffer)
+              (re-search-forward "Invoice date: *")
+              (kill-region
+               (point)
+               (save-excursion
+                 (end-of-line)
+                 (point)))
+              (org-insert-time-stamp
+               (current-time)
+               nil t)
+              (beginning-of-buffer)
+              (search-forward "#+BEGIN: clocktable")
+              (unwind-protect
+                  (progn
+                    (defadvice org-table-goto-column
+                        (before always-make-new-columns
+                                (n &optional on-delim force)
+                                activate)
+                      "always adds new columns when we move to them"
+                      (setq force t))
+                    (org-clocktable-shift 'right 1))
+                (ad-deactivate 'org-table-goto-column))
+              (beginning-of-buffer)
+              (search-forward "| totaltarget")
+              (org-table-recalculate t))))))
  '(smartrep-mode-line-active-bg (solarized-color-blend "#8ac6f2" "#2a2a2a" 0.2))
  '(sml/active-background-color "#34495e")
  '(sml/active-foreground-color "#ecf0f1")
