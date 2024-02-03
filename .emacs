@@ -32,6 +32,7 @@
 (global-set-key (kbd "M-SPC") 'other-window)
 (global-set-key (kbd "C-c C-r") 'replace-string)
 (global-set-key (kbd "C-c o") 'occur)
+(global-set-key (kbd "M-j") 'c-indent-new-comment-line)
 
 ;; C mode
 (setq-default indent-tabs-mode nil)
@@ -172,9 +173,10 @@
  '(nrepl-message-colors
    '("#ffb4ac" "#ddaa6f" "#e5c06d" "#39454b" "#dce9f1" "#3e3e45" "#7ec98f" "#e5786d" "#834c98"))
  '(package-selected-packages
-   '(cmake-mode markdown-mode package-utils org org-drill lorem-ipsum julia-mode php-mode easy-jekyll poly-markdown realgud-lldb solarized-theme slime haskell-mode flatui-theme company color-theme-sanityinc-tomorrow auctex))
+   '(citre ctags-update csharp-mode tree-sitter-langs tree-sitter cmake-mode markdown-mode package-utils org org-drill lorem-ipsum julia-mode php-mode easy-jekyll poly-markdown realgud-lldb solarized-theme slime haskell-mode flatui-theme company color-theme-sanityinc-tomorrow auctex))
  '(pos-tip-background-color "#2a2a2a")
  '(pos-tip-foreground-color "#939393")
+ '(reb-re-syntax 'string)
  '(safe-local-variable-values
    '((eval progn
            (set
@@ -318,3 +320,22 @@
 
 ;; ose mode
 (require 'ose-mode)
+(require 'oscript-mode)
+
+;; helper for mathjax/latex in doxygen comments
+(defun doxygen-math-snippet ()
+   "insert the beginning and ending chars of math mode and place the cursor between them."
+ (interactive)
+ (insert "@f$@f$")
+ (backward-char 3))
+(global-set-key (kbd "M-$") 'doxygen-math-snippet)
+
+(require 'highlight-doxygen)
+
+(setq split-height-threshold nil)
+(setq split-width-threshold 0)
+
+(custom-set-variables
+ '(ediff-window-setup-function 'ediff-setup-windows-plain)
+ '(ediff-diff-options "-w")
+ '(ediff-split-window-function 'split-window-horizontally))

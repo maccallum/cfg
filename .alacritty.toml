@@ -1,0 +1,55 @@
+[window]
+option_as_alt="Both"
+
+[font]
+size = 12
+
+[[keyboard.bindings]]
+action="ToggleSimpleFullscreen"
+key="Return"
+mods="Command"
+
+[[keyboard.bindings]]
+action="IncreaseFontSize"
+key="Equals"
+mods="Command"
+
+[[keyboard.bindings]]
+action="DecreaseFontSize"
+key="Minus"
+mods="Command"
+
+[[keyboard.bindings]]
+action="ResetFontSize"
+key="Equals"
+mods="Command|Shift"
+
+
+# Colors (iTerm 2 default theme)
+[colors]
+[colors.primary]
+#background = "#101421"
+background = "#000000"
+#foreground = "#fffbf6"
+foreground = "#c7c7c7"
+
+[colors.normal]
+black =   "#2e2e2e"
+red =     "#eb4129"
+green =   "#abe047"
+yellow =  "#f6c744"
+blue =    "#47a0f3"
+magenta = "#7b5cb0"
+cyan =    "#64dbed"
+white =   "#e5e9f0"
+
+[colors.bright]
+black =   "#565656"
+red =     "#ec5357"
+green =   "#c0e17d"
+yellow =  "#f9da6a"
+blue =    "#49a4f8"
+magenta = "#a47de9"
+cyan =    "#99faf2"
+white =   "#ffffff"
+
