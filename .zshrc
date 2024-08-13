@@ -23,3 +23,5 @@ alias emacs='enw'
 if [[ -e "$HOME/.local.zsh" ]]; then
     source "$HOME/.local.zsh"
 fi
+
+export PATH="$PATH:/$HOME/.bin"
