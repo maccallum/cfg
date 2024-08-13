@@ -1,7 +1,7 @@
 shell -$SHELL
 
 # needed by iTerm under certain versions of emacs
-# setenv COLORTERM ""
+setenv COLORTERM ""
 term screen-256color
 defscrollback 10000
 
