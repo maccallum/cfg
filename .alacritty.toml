@@ -10,6 +10,11 @@ key="Return"
 mods="Command"
 
 [[keyboard.bindings]]
+action="ToggleFullscreen"
+key="Return"
+mods="Shift"
+
+[[keyboard.bindings]]
 action="IncreaseFontSize"
 key="Equals"
 mods="Command"
