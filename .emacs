@@ -1,4 +1,4 @@
-(add-to-list 'load-path "/usr/local/share/emacs/site-lisp")
+(add-to-list 'load-path "/usr/local/share/emacs/site-list-lisp")
 (let ((default-directory (expand-file-name "~/elisp")))
   (normal-top-level-add-subdirs-to-load-path))
 
@@ -19,7 +19,7 @@
 
 ;; display
 (global-hl-line-mode 1)
-(set-face-background 'hl-line "dark blue")
+;; (set-face-background 'hl-line "dark blue")
 
 (blink-cursor-mode 1)
 (menu-bar-mode -1)
@@ -176,7 +176,9 @@
    [default bold shadow italic underline bold bold-italic bold])
  '(ansi-color-names-vector
    (vector "#000000" "#d54e53" "#b9ca4a" "#e7c547" "#7aa6da" "#c397d8" "#70c0b1" "#eaeaea"))
+ '(beacon-blink-duration 0.6)
  '(beacon-color "#d54e53")
+ '(beacon-size 40)
  '(case-fold-search t)
  '(compilation-message-face 'default)
  '(cua-global-mark-cursor-color "#7ec98f")
@@ -223,7 +225,7 @@
  '(nrepl-message-colors
    '("#ffb4ac" "#ddaa6f" "#e5c06d" "#39454b" "#dce9f1" "#3e3e45" "#7ec98f" "#e5786d" "#834c98"))
  '(package-selected-packages
-   '(popup helm citre ctags-update csharp-mode tree-sitter-langs tree-sitter cmake-mode markdown-mode package-utils org org-drill lorem-ipsum julia-mode php-mode easy-jekyll poly-markdown realgud-lldb solarized-theme slime haskell-mode flatui-theme company color-theme-sanityinc-tomorrow auctex))
+   '(yasnippet fill-column-indicator beacon undo-tree popup helm citre ctags-update csharp-mode tree-sitter-langs tree-sitter cmake-mode markdown-mode package-utils org org-drill lorem-ipsum julia-mode php-mode easy-jekyll poly-markdown realgud-lldb solarized-theme slime haskell-mode flatui-theme company color-theme-sanityinc-tomorrow auctex))
  '(pos-tip-background-color "#2a2a2a")
  '(pos-tip-foreground-color "#939393")
  '(python-indent-guess-indent-offset nil)
@@ -367,7 +369,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(font-lock-comment-face ((t (:foreground "color-216"))))
+ '(font-lock-string-face ((t (:foreground "brightwhite"))))
+ '(hl-line ((t (:inherit highlight :extend t :background "color-54"))))
+ '(mode-line ((t (:background "brightwhite" :foreground "black" :box (:line-width (1 . -1) :style released-button)))))
+ '(mode-line-inactive ((t (:inherit mode-line :background "color-88" :foreground "grey80" :box (:line-width (1 . -1) :color "grey40") :weight light))))
+ '(region ((t (:extend t :background "color-88")))))
 
 ;; ose mode
 (require 'ose-mode)
@@ -383,5 +390,12 @@
 
 (require 'highlight-doxygen)
 
-(setq split-height-threshold nil)
-(setq split-width-threshold 0)
+;; (setq split-height-threshold nil)
+;; (setq split-width-threshold 0)
+
+;; desktop-read
+(setq desktop-path '("."))
+
+;; undo-tree
+(setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
+(global-undo-tree-mode)

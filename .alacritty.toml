@@ -58,3 +58,16 @@ magenta = "#a47de9"
 cyan =    "#99faf2"
 white =   "#ffffff"
 
+[bell]
+duration = 100
+animation = "Linear"
+# animation = "Ease"
+# animation = "EaseOut"
+# animation = "EaseOutSine"
+# animation = "EaseOutQuad"
+# animation = "EaseOutCubic"
+# animation = "EaseOutQuart"
+# animation = "EaseOutQuint"
+# animation = "EaseOutExpo"
+# animation = "EaseOutCirc"
+color = "#000000"
