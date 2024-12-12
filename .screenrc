@@ -16,6 +16,8 @@ startup_message off
 #
 #change the hardstatus settings to give an window list at the bottom of the
 #screen, with the time and date and with the current window highlighted
-hardstatus alwayslastline
-#hardstatus string '%{= kG}%-Lw%{= kW}%50> %n%f* %t%{= kG}%+Lw%< %{= kG}%-=%c:%s%{-}'
-hardstatus string '%{= kg}[ %{g}%H : %{G}%S %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W}%c %{g}]'
+#hardstatus alwayslastline
+#hardstatus string '%{= kg}[ %{g}%H : %{G}%S %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W}%c %{g}]'
+truecolor on
+hardstatus off
+hardstatus alwayslastline '%{= .;#444444} %{= .;#444444}%-w%{= #ff0000;#444444}[%{= #00ff00;#444444}%n %t%{= #ff0000;#444444}]%{= .;#444444}%+w %-= %{#00ff00;#444444} %H%{#ffffff;#444444}|%{#ffff00;#444444}%101`%{#ffffff;#444444}|%D %M %d %Y%{= #00ffff;#444444} %c%{-}'
