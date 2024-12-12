@@ -369,12 +369,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(font-lock-comment-face ((t (:foreground "color-216"))))
+ '(font-lock-comment-face ((t (:foreground "sienna1"))))
  '(font-lock-string-face ((t (:foreground "brightwhite"))))
- '(hl-line ((t (:inherit highlight :extend t :background "color-54"))))
+ '(hl-line ((t (:inherit highlight :extend t :background "DarkViolet"))))
  '(mode-line ((t (:background "brightwhite" :foreground "black" :box (:line-width (1 . -1) :style released-button)))))
- '(mode-line-inactive ((t (:inherit mode-line :background "color-88" :foreground "grey80" :box (:line-width (1 . -1) :color "grey40") :weight light))))
- '(region ((t (:extend t :background "color-88")))))
+ '(mode-line-inactive ((t (:inherit mode-line :background "firebrick4" :foreground "grey80" :box (:line-width (1 . -1) :color "grey40") :weight light))))
+ '(region ((t (:extend t :background "firebrick4")))))
 
 ;; ose mode
 (require 'ose-mode)
@@ -388,7 +388,7 @@
  (backward-char 3))
 (global-set-key (kbd "M-$") 'doxygen-math-snippet)
 
-(require 'highlight-doxygen)
+;(require 'highlight-doxygen)
 
 ;; (setq split-height-threshold nil)
 ;; (setq split-width-threshold 0)
