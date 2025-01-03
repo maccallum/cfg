@@ -71,3 +71,6 @@ animation = "Linear"
 # animation = "EaseOutExpo"
 # animation = "EaseOutCirc"
 color = "#000000"
+
+[env]
+TERM = "xterm-256color"
