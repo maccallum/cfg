@@ -18,7 +18,7 @@ markkeys ^G
 truecolor on
 #hardstatus off
 backtick 101 5 5 /bin/bash -c "foo=\$(uptime | awk '{print \$(NF-2), \$(NF-1), \$NF}'); echo \"\$foo\""
-hardstatus alwayslastline '%{.;#003333} %{+b #ffffff;#003333}%H | %S %-= %?%E** %?%{+b #00ffff;#003333}%-Lw%{+b #000000;#00ffff}%n%f %t%{+b #00ffff;000000}%+Lw%{.;#003333}%?%E **%? %-= %{+b #ffffff;#003333}%101` | %D %M %d %Y %{+b #00ffff;#003333}%c%{-}'
+hardstatus alwayslastline '%{.;#003333} %{+b #ffffff;#003333}%H | %S %-= %?%E** %?%{+b #00ffff;#003333}%-Lw%{+b #000000;#00ffff}%n%f %t%{+b #00ffff;#003333}%+Lw%{+b #ffffff;#003333}%?%E **%? %-= %{+b #ffffff;#003333}%101` | %D %M %d %Y %{+b #00ffff;#003333}%c%{-}'
 
 #hardstatus alwayslastline '%{.;#444444} %{#ffffff;#444444}%H | %S %-= %?%E** %?%-Lw%{#000000;#ffffff}%n%f %t%{#ffffff;000000}%+Lw%{.;#444444}%?%E **%? %-= %{#ffffff;#444444}%101` | %D %M %d %Y %{#00ffff;#444444}%c%{-}'
 
