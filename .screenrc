@@ -13,11 +13,12 @@ bind x
 
 startup_message off
 
-#
-#change the hardstatus settings to give an window list at the bottom of the
-#screen, with the time and date and with the current window highlighted
-#hardstatus alwayslastline
-#hardstatus string '%{= kg}[ %{g}%H : %{G}%S %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W}%c %{g}]'
+markkeys ^G
+
 truecolor on
-hardstatus off
-hardstatus alwayslastline '%{= .;#444444} %{= .;#444444}%-w%{= #ff0000;#444444}[%{= #00ff00;#444444}%n %t%{= #ff0000;#444444}]%{= .;#444444}%+w %-= %{#00ff00;#444444} %H%{#ffffff;#444444}|%{#ffff00;#444444}%101`%{#ffffff;#444444}|%D %M %d %Y%{= #00ffff;#444444} %c%{-}'
+#hardstatus off
+backtick 101 5 5 /bin/bash -c "foo=\$(uptime | awk '{print \$10, \$11, \$12}'); echo \"\$foo\""
+hardstatus alwayslastline '%{.;#003333} %{+b #ffffff;#003333}%H | %S %-= %?%E** %?%{+b #00ffff;#003333}%-Lw%{+b #000000;#00ffff}%n%f %t%{+b #00ffff;000000}%+Lw%{.;#003333}%?%E **%? %-= %{+b #ffffff;#003333}%101` | %D %M %d %Y %{+b #00ffff;#003333}%c%{-}'
+
+#hardstatus alwayslastline '%{.;#444444} %{#ffffff;#444444}%H | %S %-= %?%E** %?%-Lw%{#000000;#ffffff}%n%f %t%{#ffffff;000000}%+Lw%{.;#444444}%?%E **%? %-= %{#ffffff;#444444}%101` | %D %M %d %Y %{#00ffff;#444444}%c%{-}'
+
