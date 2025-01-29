@@ -16,7 +16,9 @@ startup_message off
 markkeys ^G
 
 truecolor on
-#hardstatus off
+
 backtick 101 5 5 /bin/bash -c "foo=\$(uptime | awk '{print \$(NF-2), \$(NF-1), \$NF}'); echo \"\$foo\""
+hardstatus off
 hardstatus alwayslastline '%{#ffffff;#003333}%H | %S %-= %?%E** %?%{#00ffff;#003333}%-Lw%{#000000;#00ffff}%n%f %t%{#00ffff;#003333}%+Lw%{#ffffff;#003333}%?%E **%? %-= %{#ffffff;#003333}%101` | %D %M %d %Y %{#00ffff;#003333}%c%{-}'
 
+# hardstatus alwayslastline '%{#00ff00}[ %H ][%{#ffffff}%= %{7}%?%-Lw%?%{1;0}%{1}(%{15}%n%f%t%?(%u)%?%{1;0}%{1})%{7}%?%+Lw%? %=%{#00ff00}][ %{#00a5ff}%{6}%Y-%m-%d %{#ffffff}%{7}%0c%{#00ff00} ]'
