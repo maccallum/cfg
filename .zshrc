@@ -25,3 +25,4 @@ if [[ -e "$HOME/.local.zsh" ]]; then
 fi
 
 export PATH="$PATH:/$HOME/.bin"
+export EDITOR=emacs

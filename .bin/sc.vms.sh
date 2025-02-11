@@ -1,9 +1,14 @@
 cd $HOME
 name="vms"
 jump="nuc1"
+all=false
+vms=("$@")
 
-while getopts ":hmj:optzd" options; do
+while getopts ":ahj:" options; do
     case "${options}" in
+        a)
+            all=true
+            ;;
 	# h)
 	#     usage
 	#     exit 0
@@ -19,15 +24,23 @@ while getopts ":hmj:optzd" options; do
 done
 shift $((OPTIND - 1))
 
+# echo "all => $all"
+if [ "$all" = true ] ; then
+    vms=( $(virsh -c "qemu+ssh://${jump}.local/system" list --all | grep -E '^ ([[:digit:]]|-)' | awk '{print $2}') )
+fi
+# echo "vms => $vms"
+# echo "args => $@"
+
 screen -S "$name" -d -m
 
-screen -S "$name" -p 0 -X screen -fa -t "$jump"
-screen -S "$name" -p "$vm" -X stuff "ssh ${jump}.local\n"
+screen -S "$name" -p 0 -X screen -fa -t "virsh"
+screen -S "$name" -p "virsh" -X stuff "virsh -c qemu+ssh://${jump}.local/system\n"
 
-for vm in "$jump" "$@"; do
+screen -S "$name" -p 0 -X screen -fa -t "$jump"
+screen -S "$name" -p "$jump" -X stuff "ssh ${jump}.local\n"
+
+for vm in "$jump" "${vms[@]}"; do
     if [ "$vm" != "$jump" ]; then
-        # screen -S "$name" -p "$vm" -X stuff "ssh ${vm}.local\n"
-        #else
         screen -S "$name" -p 0 -X screen -fa -t "$vm"
     	screen -S "$name" -p "$vm" -X stuff "ssh -J ${jump}.local ${vm}.local\n"
     fi

@@ -233,7 +233,7 @@
  '(nrepl-message-colors
    '("#ffb4ac" "#ddaa6f" "#e5c06d" "#39454b" "#dce9f1" "#3e3e45" "#7ec98f" "#e5786d" "#834c98"))
  '(package-selected-packages
-   '(yasnippet fill-column-indicator beacon undo-tree popup helm citre ctags-update csharp-mode tree-sitter-langs tree-sitter cmake-mode markdown-mode package-utils org org-drill lorem-ipsum julia-mode php-mode easy-jekyll poly-markdown realgud-lldb solarized-theme slime haskell-mode flatui-theme company color-theme-sanityinc-tomorrow auctex))
+   '(swift-mode yasnippet fill-column-indicator beacon undo-tree popup helm citre ctags-update csharp-mode tree-sitter-langs tree-sitter cmake-mode markdown-mode package-utils org org-drill lorem-ipsum julia-mode php-mode easy-jekyll poly-markdown realgud-lldb solarized-theme slime haskell-mode flatui-theme company color-theme-sanityinc-tomorrow auctex))
  '(pos-tip-background-color "#2a2a2a")
  '(pos-tip-foreground-color "#939393")
  '(python-indent-guess-indent-offset nil)
