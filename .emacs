@@ -1,6 +1,14 @@
 (add-to-list 'load-path "/usr/local/share/emacs/site-list-lisp")
-(let ((default-directory (expand-file-name "~/elisp")))
-  (normal-top-level-add-subdirs-to-load-path))
+;; (let ((default-directory (expand-file-name "~/elisp")))
+;;   (normal-top-level-add-subdirs-to-load-path))
+
+(let ((elisp-dir (expand-file-name "~/elisp")))
+  (when (file-directory-p elisp-dir)
+    (add-to-list 'load-path elisp-dir)
+    (let ((default-directory elisp-dir))
+      (normal-top-level-add-subdirs-to-load-path))
+    (require 'ose-mode)
+    (require 'oscript-mode)))
 
 ;; backup
 (setq backup-directory-alist `(("." . "~/.tilde-backups")))
@@ -377,8 +385,8 @@
  '(region ((t (:extend t :background "firebrick4")))))
 
 ;; ose mode
-(require 'ose-mode)
-(require 'oscript-mode)
+;; (require 'ose-mode)
+;; (require 'oscript-mode)
 
 ;; helper for mathjax/latex in doxygen comments
 (defun doxygen-math-snippet ()
