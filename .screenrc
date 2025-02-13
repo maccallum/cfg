@@ -17,7 +17,7 @@ markkeys ^G
 
 truecolor on
 
-backtick 101 5 5 /bin/bash -c "foo=\$(uptime | awk '{print \$(NF-2), \$(NF-1), \$NF}'); echo \"\$foo\""
+backtick 101 5 5 /bin/sh -c "foo=\$(uptime | awk '{print \$(NF-2), \$(NF-1), \$NF}'); echo \"\$foo\""
 hardstatus off
 hardstatus alwayslastline '%{#ffffff;#003333}%H | %S %-= %?%E** %?%{#00ffff;#003333}%-Lw%{#000000;#00ffff}%n%f %t%{#00ffff;#003333}%+Lw%{#ffffff;#003333}%?%E **%? %-= %{#ffffff;#003333}%101` | %D %M %d %Y %{#00ffff;#003333}%c%{-}'
 
